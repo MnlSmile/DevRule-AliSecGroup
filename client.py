@@ -11,7 +11,7 @@ try:
     with open('./client_config.json','r', encoding='utf-8') as f:
         config = json.load(f)
 except FileNotFoundError:
-    with open('./client_config.json','r', encoding='utf-8') as f:
+    with open('./client_config.json','w', encoding='utf-8') as f:
         json.dump({'domain': '', 'access_key': '', 'access_secret': ''}, f, indent=4)
 target_domain:str = config['domain']
 access_key:str = config['access_key']

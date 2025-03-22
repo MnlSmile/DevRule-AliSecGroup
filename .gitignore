@@ -175,3 +175,5 @@ cython_debug/
 
 client_config.json
 server_config.json
+
+releases

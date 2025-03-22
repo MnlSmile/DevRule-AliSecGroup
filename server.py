@@ -14,7 +14,7 @@ try:
     with open('./server_config.json','r', encoding='utf-8') as f:
         config = json.load(f)
 except FileNotFoundError:
-    with open('./server_config.json','r', encoding='utf-8') as f:
+    with open('./server_config.json','w', encoding='utf-8') as f:
         json.dump(
             obj = {
                 "domains": ['str', 'str', '...'],
