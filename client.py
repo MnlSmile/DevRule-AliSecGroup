@@ -19,8 +19,8 @@ access_secret:str = config['access_secret']
 
 
 ali_cfg = open_api_models.Config(
-    access_key_id=access_key,
-    access_key_secret=access_secret
+    access_key_id = access_key,
+    access_key_secret = access_secret
 )
 ali_cfg.endpoint = 'alidns.cn-shenzhen.aliyuncs.com'
 client = Client(ali_cfg)
@@ -48,16 +48,19 @@ def get_record() -> dict:
 ipv4_addr = get_intn_ipv4_addr()
 
 def update_domain() -> None:
-    req = models.UpdateDomainRecordRequest()
     rc = get_record()
-    req.record_id = rc['RecordId']
     new_value = base64.b64encode(ipv4_addr.encode('utf-8')).decode('utf-8')
+    req = models.UpdateDomainRecordRequest(
+        record_id = rc['RecordId'],
+        value = new_value,
+        rr = '.'.join(target_domain.split('.')[:-2]),
+        type = 'txt',
+    )
     if rc['Value'] == new_value:
+        print(f"Passed modify {target_domain}")
         return
-    req.rr = '.'.join(target_domain.split('.')[:-2])
-    req.type = 'txt'
-    req.value = new_value
     r = client.update_domain_record(req)
+    print(f"Modify {target_domain} -> {ipv4_addr}")
 
 def main():
     update_domain()
