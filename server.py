@@ -120,7 +120,7 @@ def update_once():
                         port = port
                     )
                 print(
-                        f"Created {f"{sec_group_rule_description}({dm},{port})"} due to empty current rules -> {ip}"
+                        f"Created {f'{sec_group_rule_description}({dm},{port})'} due to empty current rules -> {ip}"
                     )
                 continue
             for rl in current_rules:
@@ -133,11 +133,11 @@ def update_once():
                             port = port
                         )
                         print(
-                            f"Modified {f"{sec_group_rule_description}({dm},{port})"} -> {ip}"
+                            f"Modified {f'{sec_group_rule_description}({dm},{port})'} -> {ip}"
                         )
                     else:
                         print(
-                            f"Passed modify {f"{sec_group_rule_description}({dm},{port})"} while meeting {rl['Description']}"
+                            f"Passed modify {f'{sec_group_rule_description}({dm},{port})'} while meeting {rl['Description']}"
                         )
                 else:
                     create_specific_sec_group_rule(
@@ -146,7 +146,7 @@ def update_once():
                         port = port
                     )
                     print(
-                        f"Created {f"{sec_group_rule_description}({dm},{port})"} due to specific rule not found -> {ip}"
+                        f"Created {f'{sec_group_rule_description}({dm},{port})'} due to specific rule not found -> {ip}"
                     )
 
 def main():
