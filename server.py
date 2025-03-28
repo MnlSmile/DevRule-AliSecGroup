@@ -151,7 +151,10 @@ def update_once():
 
 def main():
     while True:
-        update_once()
+        try:
+            update_once()
+        except Exception:
+            pass
         time.sleep(300)
 
 if __name__ == '__main__':
